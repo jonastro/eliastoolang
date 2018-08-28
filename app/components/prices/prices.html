@@ -1,0 +1,12 @@
+<form class="form-group" ng-if="$ctrl.loaded">
+    <select class="form-control col-md-6" ng-model="$ctrl.selectedType" ng-options="type.id as $ctrl.dict[type.text].es for type in $ctrl.prices.types"></select>
+    <fieldset class="custom-border" ng-repeat="type in $ctrl.prices.types | filter: {id: $ctrl.selectedType}">
+        <legend class="custom-border">{{type.id}}</legend>
+        <div class="fields-container form-group" ng-repeat="menu in $ctrl.prices.menus | filter: {id: $ctrl.selectedType}">
+            <div class="container" ng-repeat="dish in menu.dishes">
+                <app-dish dish="dish", texts="$ctrl.dict[dish.text]" index="$index" remove="$ctrl.deleteDish(index)"></app-dish>
+            </div>
+        </div>
+        <button class="btn btn-primary" ng-click="$ctrl.addDish()">Nuevo</button>
+    </fieldset>
+</form>

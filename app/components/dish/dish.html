@@ -1,0 +1,22 @@
+<form>
+    <div class="container form-group">
+        <fieldset class="custom-border">
+            <legend class="custom-border">{{$ctrl.dish.id}}</legend>
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <label class="col-md-2 ellabel">Precio</label>
+                            <input ng-model="$ctrl.dish.price" class="form-control col-md-10 elinput" name="header">
+                        </div>
+                        <div class="row" ng-repeat="(lang, content) in $ctrl.texts">
+                            <label class="col-md-2 ellabel">{{lang}}</label>
+                            <input ng-model="$ctrl.texts[lang]" class="form-control col-md-10 elinput" name="header">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-cancel" ng-click="$ctrl.remove({index: $ctrl.index})">Eliminar</button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</form>

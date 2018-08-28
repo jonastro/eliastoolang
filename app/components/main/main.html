@@ -1,0 +1,28 @@
+<app-navbar changetab="$ctrl.changeTab(tabid)" active-tab="$ctrl.activeTab" links="$ctrl.links"></app-navbar>
+
+<div ng-if="!$ctrl.modelLoaded || !$ctrl.dictionaryLoaded">
+        <form>
+            <div class="container form-group">
+                <fieldset class="custom-border">
+                    <legend class="custom-border">Load File</legend>
+                    <div class="row">
+                        <label class="btn btn-default">
+                                <input ng-if="!$ctrl.modelLoaded" type="file" class="form-control-file elinput" ng-model="$ctrl.modelFilename" ng-upload-change="$ctrl.getJson($event)">
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    
+</div>
+
+<div ng-if="$ctrl.modelLoaded && $ctrl.dictionaryLoaded" class="container">
+    <div class="editors-container">
+        <app-info ng-if="$ctrl.activeTab == 'info'" updateinfo="$ctrl.updateInfo(params)" currlang="'es'" dict="$ctrl.dictionary" info="$ctrl.model.info"></app-info>
+        <app-prices ng-if="$ctrl.activeTab == 'menu'" dict="$ctrl.dictionary"  prices="$ctrl.model.prices"></app-prices>
+    </div>
+    <button class="btn btn-primary" ng-click="$ctrl.downloadModel()">Download</button>
+</div>
+<div ng-repeat="modal in $root.modalMessages"> 
+    <app-modal  model="modal.model" ok="modal.okClick()" cancel="modal.cancelClick()"></app-modal>
+</div>

@@ -1,0 +1,13 @@
+<form>
+    <div class="container fields-container form-group" ng-repeat="(field, fieldvalue) in $ctrl.info">
+        <fieldset class="custom-border">
+            <legend class="custom-border">{{field}}</legend>
+            <div class="row" ng-repeat="(lang, content) in $ctrl.dict[fieldvalue]">
+                <label class="col-md-2 ellabel">{{lang}}</label>
+                <input ng-model="content" class="form-control col-md-10 elinput" name="header">
+            </div>
+            <button class="btn btn-primary btn-customsec" ng-click="$ctrl.addLang(fieldvalue)">Nuevo</button>
+        </fieldset>
+        <button class="btn btn-primary" ng-click="$ctrl.addField()">Nuevo</button>
+    </div>
+</form>

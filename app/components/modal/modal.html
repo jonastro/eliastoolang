@@ -1,0 +1,14 @@
+    <div id="modal-container">
+        <form class="container">
+            <div class="container form-group">
+                <div class="modal-form">
+                    <div class="row" ng-repeat="field in $ctrl.model.fields">
+                        <label class="col-md-4 ellabel">{{field.name}}</label>
+                        <input class="form-control col-md-8 elinput" ng-model="field.value" name="header">
+                    </div>
+                    <button class="btn btn-primary" ng-click="$ctrl.ok()">OK</button>
+                    <button class="btn btn-primary btn-cancel" ng-click="$ctrl.cancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
